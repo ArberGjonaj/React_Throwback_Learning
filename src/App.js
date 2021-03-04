@@ -11,6 +11,13 @@ class App extends React.Component{
   }
   nameSwitchHandler=()=>{
     console.log("was clicked!")
+    this.setState({person:[
+      {name:'Arber Gjonaj',age:25},
+      {name:'Ulger Boja',age:25},
+      {name:'Gejsi Llani',age:24},
+      {name:'Elidor Varosi',age:25}
+    ]}
+    )
   }
   render(){
   return (
