@@ -7,7 +7,8 @@ class App extends React.Component{
       {name:'Arber',age:21},
       {name:'Ulger',age:21},
       {name:'Elidor',age:21}
-    ]
+    ],
+    showPerson: false
   }
   nameSwitchHandler=(newName)=>{
     console.log("was clicked!")
@@ -28,6 +29,13 @@ class App extends React.Component{
     ]}
     )
   }
+
+  togglePersonHandler=()=>{
+    let doesShow = this.state.showPerson
+   this.setState({
+     showPerson:!doesShow
+   })
+  }
   render(){
     const style = {
       backgroundColor: 'white',
@@ -40,7 +48,9 @@ class App extends React.Component{
     <div className="App" >
      <h1>I am a React App!</h1>
      <p>This is Really Working!</p>
-     <button style={style}  onClick={()=>this.nameSwitchHandler("Arbri")}>Name Switcher!</button>
+     <button style={style}  onClick={this.togglePersonHandler}>Toggle Person!</button>
+     {this.state.showPerson ?
+       <div>
      <Person
       click={this.nameSwitchHandler.bind(this,"Arbrer Gjonaj")}
       onChange={this.nameChangedHandler}
@@ -58,6 +68,11 @@ class App extends React.Component{
       name={this.state.person[2].name}
       age={this.state.person[2].age}
      />
+     </div>
+     :
+     null
+       }
+     
     </div>
   );
 }
