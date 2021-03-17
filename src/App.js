@@ -1,5 +1,6 @@
 import React from "react";
 import Person from "./Person/Person";
+import Radium from 'radium';
 import "./App.css";
 class App extends React.Component {
   state = {
@@ -47,6 +48,10 @@ class App extends React.Component {
       border: "1px solid blue",
       padding: "8px",
       cursor: "pointer",
+      ':hover':{
+        backgroundColor:'lightgreen',
+        color: 'black'
+      }
     };
 
     let persons = null;
@@ -68,6 +73,10 @@ class App extends React.Component {
         </div>
       );
       style.backgroundColor= 'red';
+      style[":hover"]= {
+        backgroundColor:'salmon',
+        color: 'black'
+      }
     }
     let classes = [];
     if(this.state.person.length<=2){
@@ -90,4 +99,4 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+export default Radium(App);
