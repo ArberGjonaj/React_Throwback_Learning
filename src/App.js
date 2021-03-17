@@ -48,23 +48,12 @@ class App extends React.Component{
     if(this.state.showPerson){
       persons = (
         <div>
-        <Person
-         click={this.nameSwitchHandler.bind(this,"Arbrer Gjonaj")}
-         onChange={this.nameChangedHandler}
-         name={this.state.person[0].name}
-         age={this.state.person[0].age}
-        />
-        <Person
+          {
+          this.state.person.map((person)=>{
+            return <Person name={person.name} age={person.age} />
+          })
+          }
         
-         name={this.state.person[1].name}
-         age={this.state.person[1].age}
-        >
-          I work at FedEx
-        </Person>
-        <Person
-         name={this.state.person[2].name}
-         age={this.state.person[2].age}
-        />
         </div>
       )
     }
