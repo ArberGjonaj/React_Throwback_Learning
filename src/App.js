@@ -4,22 +4,14 @@ import './App.css';
 class App extends React.Component{
   state={
     person:[
-      {name:'Arber',age:21},
-      {name:'Ulger',age:21},
-      {name:'Elidor',age:21}
+      {id:'asfgvav', name:'Arber',age:21},
+      {id:'vasdg', name:'Ulger',age:21},
+      {id:'xcgasdga', name:'Elidor',age:21}
     ],
     showPerson: false
   }
   
-  nameChangedHandler = (event) =>{
-    this.setState({person:[
-      {name:event.target.value,age:25},
-      {name:'Ulger Boja',age:25},
-      {name:'Gejsi Llani',age:24},
-      {name:'Elidor Varosi',age:25}
-    ]}
-    )
-  }
+
 
   deletePersonHandler = (personIndex) =>{
  const person = [...this.state.person];
@@ -47,7 +39,7 @@ class App extends React.Component{
         <div>
           {
           this.state.person.map((person,index)=>{
-            return <Person name={person.name}  age={person.age} withClick={this.deletePersonHandler.bind(this,index)} />
+            return <Person name={person.name} key={person.id}  age={person.age} withClick={this.deletePersonHandler.bind(this,index)} />
           })
           }
         
