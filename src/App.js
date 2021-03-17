@@ -11,7 +11,26 @@ class App extends React.Component{
     showPerson: false
   }
   
+  nameChangedHandler = (event,id) =>{
 
+    const personIndex = this.state.person.findIndex(
+      p=>{
+     
+        return p.id === id;
+      }
+    )
+    const person = {
+      ...this.state.person[personIndex]
+    };
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.person];
+
+    persons[personIndex] = person;
+    this.setState({person:persons})
+    
+  }
 
   deletePersonHandler = (personIndex) =>{
  const person = [...this.state.person];
@@ -39,7 +58,8 @@ class App extends React.Component{
         <div>
           {
           this.state.person.map((person,index)=>{
-            return <Person name={person.name} key={person.id}  age={person.age} withClick={this.deletePersonHandler.bind(this,index)} />
+            return <Person name={person.name} key={person.id}  age={person.age} withClick={this.deletePersonHandler.bind(this,index)} 
+            changed={(event)=>this.nameChangedHandler(event,person.id)} />
           })
           }
         
