@@ -1,8 +1,7 @@
 import React from "react";
-import Person from "../Components/Persons/Person/Person";
 import classes from "./App.module.css";
-import Persons from "../Components/Persons/Persons"
-import Cockpit from "../Components/Cockpit/Cockpit"
+import Persons from "../Components/Persons/Persons";
+import Cockpit from "../Components/Cockpit/Cockpit";
 
 class App extends React.Component {
   state = {
@@ -21,11 +20,8 @@ class App extends React.Component {
     const person = {
       ...this.state.person[personIndex],
     };
-
     person.name = event.target.value;
-
     const persons = [...this.state.person];
-
     persons[personIndex] = person;
     this.setState({ person: persons });
   };
@@ -35,34 +31,33 @@ class App extends React.Component {
     person.splice(personIndex, 1);
     this.setState({ person: person });
   };
- 
+
   togglePersonHandler = () => {
     let doesShow = this.state.showPerson;
     this.setState({
       showPerson: !doesShow,
     });
-
   };
+
   render() {
-
-  
     let persons = null;
-   
+
     if (this.state.showPerson) {
-      persons = 
-          <Persons persons={this.state.person} clicked={this.deletePersonHandler} changed={this.nameChangedHandler} />
-
+      persons = (
+        <Persons
+          persons={this.state.person}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+        />
+      );
     }
-
-    
-    
     return (
       <div className={classes.App}>
-
         <Cockpit
-         showPerson={this.state.showPerson}
-         person={this.state.person}
-         clicked={this.togglePersonHandler}
+          title={this.props.appTitle}
+          showPerson={this.state.showPerson}
+          person={this.state.person}
+          clicked={this.togglePersonHandler}
         />
         {persons}
       </div>
