@@ -1,7 +1,7 @@
 import React from "react";
 import Person from "./Person/Person";
 import styled from "styled-components";
-import "./App.css";
+import classes from "./App.module.css";
 
 
 
@@ -36,18 +36,19 @@ class App extends React.Component {
     person.splice(personIndex, 1);
     this.setState({ person: person });
   };
-
+ 
   togglePersonHandler = () => {
     let doesShow = this.state.showPerson;
     this.setState({
       showPerson: !doesShow,
     });
+
   };
   render() {
-    
-
+     let buttonClasses =[classes.Button];
+  
     let persons = null;
-
+   
     if (this.state.showPerson) {
       persons = (
         <div>
@@ -64,21 +65,21 @@ class App extends React.Component {
           })}
         </div>
       );
-
+  buttonClasses =[...buttonClasses,classes.Red]
     }
-    let classes = [];
+    let joinClasses = [];
     if(this.state.person.length<=2){
-      classes.push('red');//classes = ['red'];
+      joinClasses.push(classes.Red);//classes = ['red'];
     }
     if(this.state.person.length<=1){
-      classes.push('bold');//classes = ['red'], ['bold'];
+      joinClasses.push(classes.Bold);//classes = ['red'], ['bold'];
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>I am a React App!</h1>
-        <p className={classes.join(' ')}>This is Really Working!</p>
-        <button className='button' alt={this.state.showPerson} onClick={this.togglePersonHandler}>
+        <p className={joinClasses.join(' ')}>This is Really Working!</p>
+        <button className={buttonClasses.join(' ')} onClick={this.togglePersonHandler}>
           Toggle Person!
         </button>
 
