@@ -5,7 +5,10 @@ const Cockpit = (props) => {
   useEffect(
     ()=>{
     console.log('[Cockpit.js] useEffect ')
-  })
+    setTimeout(()=>{
+      alert('Saved data to cloud')
+    },1000)
+  }, [])
   let buttonClasses = [classes.Button];
   const joinClasses = [];
   if (props.showPerson) {
