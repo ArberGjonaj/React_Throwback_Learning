@@ -1,8 +1,8 @@
-import Person from "./Person/Person";
-const persons = (props) =>{
-  console.log('[Person.js] rendering ...')
- return props.persons.map((person, index) => {
-    
+import React from 'react';
+import Person from './Person/Person';
+
+const persons = (props) => {
+  return props.persons.map((person, index) =>{
     return (
       <Person
         name={person.name}
@@ -13,5 +13,5 @@ const persons = (props) =>{
       />
     );
   });
-}
+};
 export default persons;
