@@ -4,7 +4,7 @@ import Persons from "../Components/Persons/Persons";
 import Cockpit from "../Components/Cockpit/Cockpit";
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       person: [
@@ -12,11 +12,11 @@ class App extends React.Component {
         { id: "vasdg", name: "Ulger", age: 21 },
         { id: "xcgasdga", name: "Elidor", age: 21 },
       ],
-      otherState:"some other value",
+      otherState: "some other value",
       showPerson: false,
+      showCockpit: true,
     };
   }
-
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.person.findIndex((p) => {
@@ -58,12 +58,21 @@ class App extends React.Component {
     }
     return (
       <div className={classes.App}>
-        <Cockpit
-          title={this.props.appTitle}
-          showPerson={this.state.showPerson}
-          person={this.state.person}
-          clicked={this.togglePersonHandler}
-        />
+        <button
+          onClick={() => {
+            this.setState({ showCockpit: !this.state.showCockpit });
+          }}
+        >
+          Remove Cockpit
+        </button>
+        {this.state.showCockpit ? (
+          <Cockpit
+            title={this.props.appTitle}
+            showPerson={this.state.showPerson}
+            person={this.state.person}
+            clicked={this.togglePersonHandler}
+          />
+        ) : null}
         {persons}
       </div>
     );
