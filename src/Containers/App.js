@@ -69,7 +69,7 @@ class App extends React.Component {
           <Cockpit
             title={this.props.appTitle}
             showPerson={this.state.showPerson}
-            person={this.state.person}
+            personLength={this.state.person.length}
             clicked={this.togglePersonHandler}
           />
         ) : null}
