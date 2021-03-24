@@ -1,29 +1,38 @@
-import React from 'react'
-import PropTypes from 'prop-types';
-import Aux from "../../../hoc/Auxilliary"
-import classes from "./Person.module.css"; 
-import withClass from '../../../hoc/withClass';
+import React from "react";
+import PropTypes from "prop-types";
+import Aux from "../../../hoc/Auxilliary";
+import classes from "./Person.module.css";
+import withClass from "../../../hoc/withClass";
 
-const person = (props) => {
-  
+class Person extends React.Component{
+  constructor(props){
+    super(props);
+    this.inputElementRef = React.createRef();
+  }
+  componentDidMount(){
+    
+    this.inputElementRef.current.focus()
+    
+  }
+  render(){
+    return (
+      <Aux>
+        <p onClick={this.props.withClick}>
+          I'm a {this.props.name} and I am {this.props.age} years old!
+        </p>
+        <p>{this.props.children}</p>
+        <input ref={ this.inputElementRef} type="text" onChange={this.props.changed} value={this.props.name} />
+      </Aux>
+    );
+  }
 
-  return (
-    <React.Fragment>
-      <p onClick={props.withClick}>
-        I'm a {props.name} and I am {props.age} years old!
-      </p>
-      <p>{props.children}</p>
-      <input type="text" onChange={props.changed} value={props.name} />
-    </React.Fragment>
-  );
-  
-};
+}
 
-person.propTypes = {
+Person.propTypes = {
   withClick: PropTypes.func,
   name: PropTypes.string,
   age: PropTypes.number,
-  changed: PropTypes.func
+  changed: PropTypes.func,
 }
 
-export default withClass(person,classes.Person);
+export default withClass(Person, classes.Person);
