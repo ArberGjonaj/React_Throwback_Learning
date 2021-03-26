@@ -17,6 +17,7 @@ class Person extends React.Component{
   render(){
     return (
       <Aux>
+        {this.props.isAuthenticated ? <p>Authenticated</p> :<p>Not Authenticated!</p>}
         <p onClick={this.props.withClick}>
           I'm a {this.props.name} and I am {this.props.age} years old!
         </p>
