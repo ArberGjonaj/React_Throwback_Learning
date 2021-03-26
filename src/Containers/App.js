@@ -4,6 +4,7 @@ import Persons from "../Components/Persons/Persons";
 import Cockpit from "../Components/Cockpit/Cockpit";
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Auxilliary';
+import AuthContext from '../context/auth-context'
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -76,6 +77,7 @@ class App extends React.Component {
         >
           Remove Cockpit
         </button>
+        <AuthContext.Provider value={{authenticated:this.state.authenticated,login:this.loginHandler}}>
         {this.state.showCockpit ? (
           <Cockpit
             title={this.props.appTitle}
@@ -86,6 +88,7 @@ class App extends React.Component {
           />
         ) : null}
         {persons}
+        </AuthContext.Provider>
       </Aux>
     );
   }
